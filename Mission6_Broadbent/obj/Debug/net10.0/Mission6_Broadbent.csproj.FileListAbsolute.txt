@@ -212,3 +212,4 @@
 /Users/dawsonb/RiderProjects/Mission6_Broadbent/Mission6_Broadbent/obj/Debug/net10.0/Mission6_Broadbent.pdb
 /Users/dawsonb/RiderProjects/Mission6_Broadbent/Mission6_Broadbent/obj/Debug/net10.0/Mission6_Broadbent.genruntimeconfig.cache
 /Users/dawsonb/RiderProjects/Mission6_Broadbent/Mission6_Broadbent/obj/Debug/net10.0/ref/Mission6_Broadbent.dll
+/Users/dawsonb/RiderProjects/Mission6_Broadbent/Mission6_Broadbent/obj/Debug/net10.0/Mission6_Broadbent.sourcelink.json
