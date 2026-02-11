@@ -1,0 +1,28 @@
+@{
+    ViewData["Title"] = "Confirmation";
+}
+
+@* This is the model I want to use in this view *@
+@model MovieRating 
+
+<div class="text-center mt-5">
+
+    <h1 class="display-5 fw-bold mb-4">
+        Submission Confirmed
+    </h1>
+
+    <div class="card shadow-sm border-0 mx-auto p-4" style="max-width: 500px;">
+
+        <h2 class="mb-3">
+            Movie Rating for 
+            <span class="text-primary">@Model.Title</span> 
+            received!
+        </h2>
+
+        <p class="lead text-muted mb-0">
+            Thank you for your submission.
+        </p>
+
+    </div>
+
+</div>
