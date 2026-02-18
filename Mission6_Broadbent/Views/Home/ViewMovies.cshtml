@@ -1,0 +1,126 @@
+@{
+    ViewData["Title"] = "Movie Collection";
+}
+
+@model IEnumerable<Mission6_Broadbent.Models.MovieRating>
+
+<div class="container mt-5">
+
+    <!-- Page Header -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h1 class="display-6 fw-bold mb-0">Movie Collection</h1>
+            <p class="text-muted mb-0">
+                Manage and review your recorded movie ratings.
+            </p>
+        </div>
+
+        <a asp-action="AddMovies" class="btn btn-primary">
+            + Add New Movie
+        </a>
+    </div>
+
+    <!-- Table Card -->
+    <div class="card shadow-sm border-0">
+
+        <div class="table-responsive">
+
+            <table class="table table-hover align-middle mb-0">
+
+                <!-- Table Head -->
+                <thead class="table-light">
+                    <tr>
+                        <th>Title</th>
+                        <th>Year</th>
+                        <th>Director</th>
+                        <th>Category</th>
+                        <th>Rating</th>
+                        <th>Edited</th>
+                        <th>Lent To</th>
+                        <th>Copied To Plex</th>
+                        <th>Notes</th>
+                        <th class="text-center">Actions</th>
+                    </tr>
+                </thead>
+
+                <!-- Table Body -->
+                <tbody>
+
+                    @foreach (var movie in Model)
+                    {
+                        <tr>
+                            <td class="fw-semibold">
+                                @movie.Title
+                            </td>
+
+                            <td>
+                                @movie.Year
+                            </td>
+
+                            <td>
+                                @movie.Director
+                            </td>
+
+                            <!-- Navigation Property -->
+                            <td>
+                                @(movie.CategoryName?.CategoryName ?? "—")
+                            </td>
+
+                            <td>
+                                <span class="badge bg-secondary">
+                                    @movie.Rating
+                                </span>
+                            </td>
+
+                            <td>
+                                @(movie.Edited == 1 ? "Yes" : "No")
+                            </td>
+
+                            <td>
+                                @(string.IsNullOrEmpty(movie.LentTo)
+                                    ? "—"
+                                    : movie.LentTo)
+                            </td>
+
+                            <td>
+                                @(movie.CopiedToPlex == 1 ? "Yes" : "No")
+                            </td>
+
+                            <td>
+                                @(string.IsNullOrEmpty(movie.Notes)
+                                    ? "—"
+                                    : movie.Notes)
+                            </td>
+
+                            <!-- Actions Column -->
+                            <td class="text-center">
+
+                                <div class="btn-group" role="group">
+
+                                    <!-- Edit -->
+                                    <a asp-action="Edit"
+                                       asp-route-id="@movie.MovieId"
+                                       class="btn btn-sm btn-warning">
+                                        Edit
+                                    </a>
+
+                                    <!-- Delete -->
+                                    <a asp-action="Delete"
+                                       asp-route-id="@movie.MovieId"
+                                       class="btn btn-sm btn-danger">
+                                        Delete
+                                    </a>
+
+                                </div>
+
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
+
+        </div>
+    </div>
+</div>
