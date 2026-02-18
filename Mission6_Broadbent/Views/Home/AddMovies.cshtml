@@ -14,51 +14,66 @@
     <div class="card shadow-sm border-0 mx-auto p-4" style="max-width: 600px;">
 
         <form method="post">
+            
+            <input type="hidden" asp-for="MovieId">
 
             <div class="mb-3">
                 <label asp-for="Title" class="form-label"></label>
-                <input asp-for="Title" class="form-control" type="text" />
+                <input asp-for="Title" class="form-control" type="text"/>
             </div>
 
             <div class="mb-3">
                 <label asp-for="Year" class="form-label"></label>
-                <input asp-for="Year" class="form-control" type="number" />
+                <input asp-for="Year" class="form-control" type="number"/>
             </div>
 
             <div class="mb-3">
                 <label asp-for="Director" class="form-label"></label>
-                <input asp-for="Director" class="form-control" type="text" />
+                <input asp-for="Director" class="form-control" type="text"/>
             </div>
 
             <div class="mb-3">
-                <label asp-for="Category" class="form-label"></label>
-                <input asp-for="Category" class="form-control" type="text" />
-            </div>
+                <label asp-for="CategoryName" class="form-label"></label>
+                <select asp-for="CategoryId" class="form-select">
+                    <option value="">-- Select a Category --</option>
+                    @foreach (Category c in ViewBag.Categories)
+                    {
+                        <option value="@c.CategoryId">@c.CategoryName</option>
+                    }
+                </select>
+            </div>    
 
-            <!-- Rating dropdown -->
+                <!-- Rating dropdown -->
             <div class="mb-3">
                 <label asp-for="Rating" class="form-label"></label>
                 <select asp-for="Rating" class="form-select">
-                    <option value="">-- Select --</option>
+                    <option value="">-- Select a Rating --</option>
                     <option value="G">G</option>
                     <option value="PG">PG</option>
                     <option value="PG-13">PG-13</option>
                     <option value="R">R</option>
                 </select>
             </div>
-
-            <!-- Optional fields -->
+            
             <div class="mb-3">
                 <label asp-for="Edited" class="form-label"></label>
                 <select asp-for="Edited" class="form-select">
-                    <option value="False">No</option>
-                    <option value="True">Yes</option>
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
                 </select>
             </div>
 
             <div class="mb-3">
                 <label asp-for="LentTo" class="form-label"></label>
-                <input asp-for="LentTo" class="form-control" type="text" />
+                <input asp-for="LentTo" class="form-control" type="text"/>
+            </div>
+            
+            <div class="mb-3">
+                <label asp-for="CopiedToPlex" class="form-label"></label>
+                <select asp-for="CopiedToPlex" class="form-select">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </select>
             </div>
 
             <div class="mb-4">
@@ -66,16 +81,30 @@
                 <input asp-for="Notes"
                        class="form-control"
                        type="text"
-                       maxlength="25" />
+                       maxlength="25"/>
                 <div class="form-text">Max 25 characters.</div>
             </div>
 
+            <!-- Error Box -->
+            @if (!ViewData.ModelState.IsValid)
+            {
+                <div class="border border-danger rounded p-3 mb-3 bg-light">
+                    <h6 class="text-danger mb-2">
+                        Please fix the following errors:
+                    </h6>
+
+                    <div asp-validation-summary="All"
+                         class="text-danger">
+                    </div>
+                </div>
+            }
+            
             <div class="text-center">
                 <button type="submit" class="btn btn-primary px-4">
                     Submit
                 </button>
             </div>
-
+            
         </form>
 
     </div>
