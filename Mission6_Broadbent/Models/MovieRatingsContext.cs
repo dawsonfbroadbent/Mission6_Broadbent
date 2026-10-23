@@ -10,5 +10,7 @@ public class MovieRatingsContext : DbContext
         
     }
     
-    public DbSet<MovieRating> MovieRatings { get; set; }
+    public DbSet<MovieRating> Movies { get; set; }
+    public DbSet<Category> Categories { get; set; }
+
 }
